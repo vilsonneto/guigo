@@ -5,4 +5,5 @@ dist/
 .env.local
 .turbo/
 *.tsbuildinfo
+coverage/
 internal/
