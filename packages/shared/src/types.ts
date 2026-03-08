@@ -2,7 +2,7 @@ export interface Obrigacao {
   id: string;
   nome: string;
   valorTotal: number;
-  ciclo: "semanal" | "mensal";
+  ciclo: "semanal" | "mensal" | "diario";
   cotaDiaria: number;
   ativo: boolean;
   validoAte: string | null;

@@ -42,7 +42,7 @@ export function calcularLivre(
  * Retorna null se ok, ou a razao da suspeita.
  */
 export function validarEnvio(valor: number): string | null {
-  if (valor < 50) return "Valor muito baixo (< R$50) — possível erro de digitação";
-  if (valor > 800) return "Valor muito alto (> R$800) — possível acumulado de 2+ dias";
+  if (valor < 200) return "Valor muito baixo (< R$200) — possível erro de digitação";
+  if (valor > 600) return "Valor muito alto (> R$600) — possível acumulado de 2+ dias";
   return null;
 }
