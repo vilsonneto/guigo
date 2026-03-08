@@ -1,0 +1,29 @@
+name: Feature Request
+description: Sugerir uma nova funcionalidade
+labels: ["feat"]
+body:
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição da funcionalidade
+      description: O que você gostaria que existisse?
+    validations:
+      required: true
+  - type: textarea
+    id: motivacao
+    attributes:
+      label: Motivação
+      description: Por que isso é importante?
+    validations:
+      required: false
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Workspace afetado
+      options:
+        - bot
+        - admin
+        - shared
+        - monorepo (raiz)
+    validations:
+      required: true
