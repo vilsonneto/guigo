@@ -1,6 +1,19 @@
 {
   "name": "guigo",
   "private": true,
+  "description": "Bot WhatsApp que calcula quanto do faturamento diário é livre pra gastar",
+  "author": {
+    "name": "Vilson Padilha Neto",
+    "url": "https://github.com/vilsonneto"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vilsonneto/guigo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vilsonneto/guigo/issues"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
