@@ -1,4 +1,4 @@
-import type { Obrigacao, ResultadoCalculo } from "./types.js";
+import type { Obrigacao, ResultadoCalculo } from './types.js'
 
 /**
  * Calcula quanto do faturamento diario e livre pra gastar.
@@ -11,30 +11,27 @@ import type { Obrigacao, ResultadoCalculo } from "./types.js";
 export function calcularLivre(
   receitaBruta: number,
   obrigacoes: Obrigacao[],
-  gasolinaDiaria: number
+  gasolinaDiaria: number,
 ): ResultadoCalculo {
-  const receitaLiquida = receitaBruta - gasolinaDiaria;
+  const receitaLiquida = receitaBruta - gasolinaDiaria
 
-  const obrigacoesAtivas = obrigacoes.filter((o) => o.ativo);
+  const obrigacoesAtivas = obrigacoes.filter((o) => o.ativo)
 
   const envelopes = obrigacoesAtivas.map((o) => ({
     nome: o.nome,
     cotaDiaria: o.cotaDiaria,
-  }));
+  }))
 
-  const totalReservado = obrigacoesAtivas.reduce(
-    (sum, o) => sum + o.cotaDiaria,
-    0
-  );
+  const totalReservado = obrigacoesAtivas.reduce((sum, o) => sum + o.cotaDiaria, 0)
 
-  const livre = receitaLiquida - totalReservado;
+  const livre = receitaLiquida - totalReservado
 
   return {
     receitaLiquida,
     totalReservado,
     livre,
     envelopes,
-  };
+  }
 }
 
 /**
@@ -42,7 +39,7 @@ export function calcularLivre(
  * Retorna null se ok, ou a razao da suspeita.
  */
 export function validarEnvio(valor: number): string | null {
-  if (valor < 200) return "Valor muito baixo (< R$200) — possível erro de digitação";
-  if (valor > 600) return "Valor muito alto (> R$600) — possível acumulado de 2+ dias";
-  return null;
+  if (valor < 200) return 'Valor muito baixo (< R$200) — possível erro de digitação'
+  if (valor > 600) return 'Valor muito alto (> R$600) — possível acumulado de 2+ dias'
+  return null
 }
