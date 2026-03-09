@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Painel de monitoramento do Guigo',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }): React.ReactNode {
   return (
     <html lang="pt-BR">
       <body>{children}</body>
