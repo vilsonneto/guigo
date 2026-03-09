@@ -4,7 +4,14 @@ import prettierConfig from 'eslint-config-prettier'
 
 export default tseslint.config(
   {
-    ignores: ['dist/', 'node_modules/', '.next/', '.turbo/', 'supabase/'],
+    ignores: [
+      '**/dist/',
+      '**/node_modules/',
+      '**/.next/',
+      '**/.turbo/',
+      'supabase/',
+      '**/next-env.d.ts',
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
