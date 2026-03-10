@@ -29,7 +29,10 @@
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "validate": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build"
+    "validate": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build",
+    "db:test": "node --env-file=.env --import=tsx scripts/test-conexao.ts",
+    "db:push": "npx supabase db push",
+    "db:reset": "npx supabase db reset"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -38,6 +41,7 @@
     "eslint-config-prettier": "^10.1.8",
     "jiti": "^2.6.1",
     "prettier": "^3.8.1",
+    "supabase": "^2.77.0",
     "turbo": "^2",
     "typescript-eslint": "^8.56.1",
     "vitest": "^4.0.18"
