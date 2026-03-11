@@ -32,7 +32,11 @@
     "validate": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build",
     "db:test": "node --env-file=.env --import=tsx scripts/test-conexao.ts",
     "db:push": "npx supabase db push",
-    "db:reset": "npx supabase db reset"
+    "db:reset": "npx supabase db reset",
+    "evo:up": "docker compose up -d",
+    "evo:down": "docker compose down",
+    "evo:setup": "node --env-file=.env --import=tsx scripts/setup-evolution.ts",
+    "evo:test": "node --env-file=.env --import=tsx scripts/test-whatsapp.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

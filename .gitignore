@@ -7,3 +7,4 @@ dist/
 *.tsbuildinfo
 coverage/
 internal/
+scripts/qrcode.html
