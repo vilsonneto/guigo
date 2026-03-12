@@ -5,7 +5,7 @@ const API_KEY = process.env.EVOLUTION_API_KEY ?? ''
 const INSTANCE = process.env.EVOLUTION_INSTANCE ?? 'guigo'
 const MOTORISTA = process.env.MOTORISTA_WHATSAPP ?? ''
 
-async function enviarMensagem(texto: string): Promise<void> {
+export async function enviarMensagem(texto: string): Promise<void> {
   await axios.post(
     `${API_URL}/message/sendText/${INSTANCE}`,
     {
