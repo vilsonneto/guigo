@@ -59,49 +59,47 @@ function lerBody(req: http.IncomingMessage): Promise<string> {
   })
 }
 
-const server = http.createServer(
-  async (req: http.IncomingMessage, res: http.ServerResponse) => {
-    if (req.method === 'POST' && req.url === '/webhook') {
-      try {
-        const body = await lerBody(req)
-        const payload = JSON.parse(body) as EvolutionPayload
+const server = http.createServer(async (req: http.IncomingMessage, res: http.ServerResponse) => {
+  if (req.method === 'POST' && req.url === '/webhook') {
+    try {
+      const body = await lerBody(req)
+      const payload = JSON.parse(body) as EvolutionPayload
 
-        if (payload.event !== 'messages.upsert' || !eMensagemDoPai(payload)) {
-          res.writeHead(200)
-          res.end('ok')
-          return
-        }
-
-        const texto = extrairTexto(payload)
-        if (!texto) {
-          res.writeHead(200)
-          res.end('ok')
-          return
-        }
-
-        console.log(`Mensagem recebida do pai: "${texto}"`)
-        await onMensagem(texto.trim())
-
+      if (payload.event !== 'messages.upsert' || !eMensagemDoPai(payload)) {
         res.writeHead(200)
         res.end('ok')
-      } catch (err) {
-        console.error('Erro ao processar webhook:', err)
-        res.writeHead(400)
-        res.end('erro')
+        return
       }
-      return
-    }
 
-    if (req.method === 'GET' && req.url === '/health') {
-      res.writeHead(200, { 'Content-Type': 'application/json' })
-      res.end(JSON.stringify({ status: 'ok' }))
-      return
-    }
+      const texto = extrairTexto(payload)
+      if (!texto) {
+        res.writeHead(200)
+        res.end('ok')
+        return
+      }
 
-    res.writeHead(404)
-    res.end('not found')
-  },
-)
+      console.log(`Mensagem recebida do pai: "${texto}"`)
+      await onMensagem(texto.trim())
+
+      res.writeHead(200)
+      res.end('ok')
+    } catch (err) {
+      console.error('Erro ao processar webhook:', err)
+      res.writeHead(400)
+      res.end('erro')
+    }
+    return
+  }
+
+  if (req.method === 'GET' && req.url === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.end(JSON.stringify({ status: 'ok' }))
+    return
+  }
+
+  res.writeHead(404)
+  res.end('not found')
+})
 
 export function iniciarWebhook(): void {
   server.listen(PORT, () => {
