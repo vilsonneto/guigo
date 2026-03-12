@@ -36,7 +36,8 @@
     "evo:up": "docker compose up -d",
     "evo:down": "docker compose down",
     "evo:setup": "node --env-file=.env --import=tsx scripts/setup-evolution.ts",
-    "evo:test": "node --env-file=.env --import=tsx scripts/test-whatsapp.ts"
+    "evo:test": "node --env-file=.env --import=tsx scripts/test-whatsapp.ts",
+    "evo:webhook": "node --env-file=.env --import=tsx scripts/setup-webhook.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
